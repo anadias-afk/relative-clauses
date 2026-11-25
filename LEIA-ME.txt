@@ -1,0 +1,34 @@
+Relative Clauses in an AI World — app para os alunos (PWA)
+Autoria: Ana Dias
+
+O QUE É
+Uma aplicação web instalável com as três rotas (A, B e C), o teste rápido para escolher a rota e a correção automática.
+Depois de publicada num site, os alunos abrem o link no telemóvel e instalam-na no ecrã principal. Fica a funcionar como uma app, também sem internet.
+Não precisa de conta no Claude nem envia dados dos alunos para lado nenhum: as respostas ficam guardadas no telemóvel de cada aluno.
+
+FICHEIROS (manter todos na mesma pasta)
+- index.html            a app
+- manifest.webmanifest  nome, cores e ícone da app
+- sw.js                 permite usar a app sem internet
+- icon-180.png, icon-192.png, icon-512.png   ícones
+
+1. PUBLICAR (só uma vez)
+A app tem de estar num endereço https. Duas opções gratuitas:
+- GitHub Pages: criar uma conta em github.com, criar um repositório público, carregar os ficheiros desta pasta
+  (Add file > Upload files) e ativar Settings > Pages > Branch: main. O endereço fica do tipo https://o-seu-nome.github.io/nome-do-repositorio/
+- Netlify: criar uma conta em netlify.com e arrastar esta pasta para a área de publicação (Deploy manually).
+Depois, coloque o link no Moodle.
+
+2. INSTALAR NO TELEMÓVEL (cada aluno)
+- Android (Chrome): abrir o link > menu ⋮ > «Instalar app» ou «Adicionar ao ecrã principal».
+- iPhone (Safari): abrir o link > botão Partilhar > «Adicionar ao ecrã principal».
+
+3. ENTREGAR À PROFESSORA
+No fim de cada rota, o aluno carrega em «Copy results for your teacher» e cola o texto numa tarefa do Moodle.
+
+4. SE ALTERAR A APP MAIS TARDE
+Em sw.js, mude "relative-clauses-v3" para "relative-clauses-v4" (e assim sucessivamente) e publique outra vez.
+Sem esta mudança, os telemóveis que já instalaram a app continuam a mostrar a versão antiga.
+
+NOTA SOBRE O MOODLE
+Carregar só o index.html no Moodle como recurso «Ficheiro» também deve abrir a página no browser, mas, alojada no Moodle, provavelmente não se instala como app nem funciona sem internet.

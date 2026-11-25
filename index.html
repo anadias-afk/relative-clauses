@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relative Clauses Routes</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#e9e1fb">
+<meta name="author" content="Ana Dias">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Relative Clauses">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;600;700&display=swap">
+<style>
+/* VOICE everyday learning: a calm, clear workbook for 15-year-olds
+   IDEA a printed exercise booklet with a lilac cover band and answer boxes the teacher marks
+   PICTURE the working exercises themselves; after submitting, ticks and a score bar per section
+   COLOUR light purple cover #e9e1fb, violet #6a4bc4 for actions, green only for right, coral #ff6f59 for "review"
+   TYPE Inter Tight 700 for titles + Inter for text
+   LAYOUT laptop: cover band with title, code and route tabs; one 860px column of sections. Phone: same, stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16131f);--ink:light-dark(#1d1830,#efeaf8);--muted:light-dark(#544d66,#b5aecb);--line:light-dark(#ddd7e8,#352e47);--panel:light-dark(#f6f3fb,#1e1a2b);--hdr:light-dark(#e9e1fb,#2a1f45);--hdrink:light-dark(#2b1a57,#f1ecff);--hdrsub:light-dark(#4b3a7a,#cfc3ef);--tabbg:light-dark(#d4c6f6,#3b2d63);--pur:light-dark(#6a4bc4,#b9a3f5);--purink:light-dark(#ffffff,#1b1233);--sel:#ece4ff;--ok:light-dark(#1d6b3a,#a3e3ad);--okbg:light-dark(#e6f5c8,#173a22);--bad:light-dark(#a8321c,#ff9b88);--badbg:light-dark(#ffe7e1,#3b1e18);--coral:#ff6f59}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Inter Tight",Inter,Arial,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0}
+.cover{background:var(--hdr);color:var(--hdrink);padding:clamp(24px,4vw,48px) max(5vw,16px) 0}
+.cover .in{max-width:860px;margin:0 auto}
+.cover h1{font-size:clamp(32px,5vw,48px);text-wrap:balance}
+.cover p{margin:8px 0 0;color:var(--hdrsub);max-width:60ch}
+.by{font-weight:600}
+.idrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.idrow label{font-weight:600}
+.idrow input{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #8c74d6;background:#fff;color:#1d1830;width:11em}
+.tabs{display:flex;gap:6px;margin-top:24px;flex-wrap:wrap}
+.tab{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border:0;border-radius:10px 10px 0 0;background:var(--tabbg);color:var(--hdrink);cursor:pointer}
+.tab[aria-selected=true]{background:var(--bg);color:var(--ink)}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+main{max-width:860px;margin:0 auto;padding:24px max(16px,3vw) 64px}
+.diag{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:28px}
+.diag summary{cursor:pointer;font-weight:700;font-size:17px}
+.route[hidden]{display:none}
+.intro{color:var(--muted);margin:0 0 20px}
+section.sec{border-top:1px solid var(--line);padding:24px 0}
+section.sec h2{font-size:24px;margin-bottom:6px}
+.help{color:var(--muted);margin:0 0 14px}
+.rule{overflow-x:auto;margin:4px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+.text{background:var(--panel);border-radius:10px;padding:16px 18px;line-height:2}
+.text h3{font-size:18px;margin-bottom:6px;line-height:1.3}
+.w{font:inherit;color:inherit;background:none;border:0;border-radius:6px;padding:2px 3px;cursor:pointer;line-height:1.6}
+.w.on{background:#ffe08a;color:#13201c;text-decoration:underline}
+.w.ok{background:var(--okbg);color:var(--ok);font-weight:700}
+.w.bad{background:var(--badbg);color:var(--bad);text-decoration:line-through}
+.w.miss{outline:2px dashed var(--bad)}
+ol.items{padding-left:1.6em;margin:0;display:grid;gap:14px}
+.q{margin-bottom:6px}
+.blank{display:inline-block;min-width:4em;border-bottom:2px solid var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0}
+.opt span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:2px solid var(--line);border-radius:22px;cursor:pointer;background:var(--bg)}
+.opt input:checked+span{border-color:var(--pur);background:var(--sel);color:#1d1830;font-weight:600}
+.opt input:focus-visible+span{outline:3px solid var(--coral);outline-offset:2px}
+input.tx,select,textarea{font:16px Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+select{width:auto;min-height:44px}
+textarea{min-height:120px;resize:vertical}
+.rcp{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.rcp label{display:inline-flex;gap:8px;align-items:center;min-height:44px}
+.rcp input[type=checkbox],.ck input{width:22px;height:22px}
+.ck{display:flex;gap:10px;align-items:center;min-height:44px}
+.fb{margin-top:6px;padding:8px 12px;border-radius:8px;font-size:15px}
+.fb:empty{display:none}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.bad{background:var(--badbg);color:var(--bad)}
+.fb.info{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.ai{border:2px solid var(--pur);border-radius:12px;padding:16px 18px}
+.prompt{background:var(--panel);border-radius:8px;padding:12px 14px;font-style:italic;margin:8px 0}
+.btn{font:600 16px Inter,Arial,sans-serif;min-height:48px;padding:10px 20px;border-radius:10px;border:2px solid var(--pur);background:var(--bg);color:var(--ink);cursor:pointer}
+.btn.main{background:var(--pur);color:var(--purink);border-color:var(--pur)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.count{font-size:15px;color:var(--muted);margin-top:6px}
+.count b{color:var(--ink)}
+.result{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:24px}
+.result[hidden]{display:none}
+.big{font:700 clamp(36px,6vw,56px)/1 "Inter Tight",Inter,sans-serif}
+.rows{display:grid;gap:8px;margin:16px 0}
+.row{display:grid;grid-template-columns:minmax(0,12em) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px}
+.bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pur)}
+.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.sticky{position:sticky;top:0;z-index:5;background:var(--pur);color:var(--purink);padding:10px 16px;border-radius:0 0 10px 10px;font-weight:600;margin:-24px 0 16px}
+.sticky[hidden]{display:none}
+.copybox{width:100%;min-height:160px;margin-top:10px}
+.note{font-size:14px;color:var(--muted)}
+.foot{border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center;padding:20px 16px 32px}
+@media(max-width:600px){.row{grid-template-columns:minmax(0,1fr) auto}.row .bar{grid-column:1/-1;order:3}.tab{padding:10px 14px;font-size:16px}table{font-size:14px}}
+@media(prefers-reduced-motion:no-preference){.fb{animation:pop .25s ease-out}@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header class="cover">
+<div class="in">
+<h1>Relative Clauses in an AI World</h1>
+<p class="by">Created by Ana Dias</p>
+<p>English · Year 10 · Choose your route, answer the questions and click <b>Submit and check</b> at the end.</p>
+<div class="idrow"><label for="code">Your code</label><input id="code" autocomplete="off" placeholder="e.g. 10B-07"><span class="note" style="color:var(--hdrsub)">Don’t write your name.</span></div>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" id="tab-A" data-r="A" aria-selected="true">Route A</button>
+<button class="tab" role="tab" id="tab-B" data-r="B" aria-selected="false">Route B</button>
+<button class="tab" role="tab" id="tab-C" data-r="C" aria-selected="false">Route C</button>
+</div>
+</div>
+</header>
+<main>
+<details class="diag" id="diag">
+<summary>Not sure which route to choose? Take the quick test (4 questions)</summary>
+<form id="f-D" onsubmit="return false"><div id="diag-body"></div>
+<div class="btns"><button class="btn main" type="button" id="diag-go">Show my route</button></div>
+<div class="fb" id="diag-fb"></div></form>
+</details>
+<div id="routes"></div>
+</main>
+<footer class="foot">© 2026 Ana Dias · Relative Clauses in an AI World · English, Year 10</footer>
+<script>
+{
+const R = {
+A: {name:"Route A", intro:"Relative pronouns in defining clauses: who, which, that, whose, where, when.",
+rule:`<table><tr><th>Pronoun</th><th>We use it for…</th><th>Example</th></tr><tr><td><b>who</b></td><td>people</td><td>Ada Lovelace was the woman <b>who</b> wrote the first computer program.</td></tr><tr><td><b>which</b></td><td>things, animals</td><td>A chatbot is a program <b>which</b> answers questions.</td></tr><tr><td><b>that</b></td><td>people or things</td><td>This is the app <b>that</b> I use for maths.</td></tr><tr><td><b>whose</b></td><td>possession</td><td>She’s the YouTuber <b>whose</b> videos explain coding.</td></tr><tr><td><b>where</b></td><td>places</td><td>That’s the lab <b>where</b> the robots are built.</td></tr><tr><td><b>when</b></td><td>time</td><td>I remember the year <b>when</b> I got my first phone.</td></tr></table>`,
+secs:[
+{t:"A1. Notice", h:"Read the text. Click the 7 relative pronouns.", items:[{t:"tap", title:"Meet Nova", text:"Nova is a chatbot *which helps students with their homework. Tomás, *who is in 10th grade, uses it every evening. Last week he asked Nova about a website *where he could practise English. Nova suggested a site *that doesn’t exist! Tomás still remembers the day *when he learnt an important lesson: AI can make mistakes. His teacher, *whose classes are about technology this term, says students must always check the answers *which they get."}]},
+{t:"A2. Classify", h:"What does each pronoun refer to?", items:[
+{t:"sel",q:"who (Tomás, who…)",o:["People","Things","Places","Time","Possession"],a:0},
+{t:"sel",q:"which (a chatbot which…)",o:["People","Things","Places","Time","Possession"],a:1},
+{t:"sel",q:"where (a website where…)",o:["People","Things","Places","Time","Possession"],a:2},
+{t:"sel",q:"that (a site that…)",o:["People","Things","Places","Time","Possession"],a:1},
+{t:"sel",q:"when (the day when…)",o:["People","Things","Places","Time","Possession"],a:3},
+{t:"sel",q:"whose (his teacher, whose classes…)",o:["People","Things","Places","Time","Possession"],a:4}]},
+{t:"B. Choose", h:"Choose the correct option.", items:[
+{t:"choice",q:"A chatbot is a program ___ answers questions.",o:["who","which"],a:1},
+{t:"choice",q:"Ada Lovelace was the woman ___ wrote the first computer program.",o:["who","which"],a:0},
+{t:"choice",q:"That’s the lab ___ the robots are built.",o:["where","when"],a:0},
+{t:"choice",q:"I remember the year ___ I got my first phone.",o:["where","when"],a:1},
+{t:"choice",q:"She’s the YouTuber ___ videos explain coding.",o:["who’s","whose"],a:1},
+{t:"choice",q:"The app ___ I use for maths is free.",o:["that","who"],a:0},
+{t:"choice",q:"Do you know anyone ___ uses AI to study?",o:["whose","who"],a:1},
+{t:"choice",q:"This is the classroom ___ we use tablets.",o:["which","where"],a:1}]},
+{t:"C. Complete", h:"Write who, which, whose, where or when.", items:[
+{t:"text",q:"A hacker is a person ___ breaks into computer systems.",a:["who","that"]},
+{t:"text",q:"A password manager is an app ___ keeps your passwords safe.",a:["which","that"]},
+{t:"text",q:"2022 was the year ___ many people started using chatbots.",a:["when"]},
+{t:"text",q:"A data centre is a building ___ thousands of computers work day and night.",a:["where"]},
+{t:"text",q:"I have a friend ___ brother designs video games.",a:["whose"]},
+{t:"text",q:"Deepfakes are videos ___ look real but are fake.",a:["which","that"]}]},
+{t:"D. Join the sentences", h:"Complete the sentence in the box.", items:[
+{t:"text",q:"This is the robot. It won the school competition.",pre:"This is the robot ",a:["This is the robot which won the school competition","This is the robot that won the school competition"]},
+{t:"text",q:"I follow a scientist. Her videos explain AI.",pre:"I follow a scientist ",a:["I follow a scientist whose videos explain AI"]},
+{t:"text",q:"That’s the room. We record our podcast there.",pre:"That’s the room ",a:["That’s the room where we record our podcast","That’s the room which we record our podcast in","That’s the room that we record our podcast in","That’s the room we record our podcast in"]},
+{t:"text",q:"I met a programmer. He works for a games company.",pre:"I met a programmer ",a:["I met a programmer who works for a games company","I met a programmer that works for a games company"]}]},
+{t:"AI Support Zone", ai:{when:"Only after you have done exercises B and C on your own.",can:"explain the rule in a simpler way or give you new examples.",cant:"give you the answers to the exercises.",prompt:"I am a student of English (B1–B2). Explain in simple English, with 3 examples about artificial intelligence, when we use who, which, whose, where and when. Do not answer any exercises for me.",log:["One thing I learnt from the AI","Were the AI’s examples correct? If not, which one was wrong?"]}},
+{t:"E. Write (no AI)", write:{task:"Describe an app or an AI tool you use. You can start with: “… is an app which…”, “I usually use it when…”, “The person who showed it to me…”, “It’s useful for students whose…”.",min:50,max:70,req:["I used at least 4 different relative pronouns","I wrote my text myself, without AI"],detect:true}},
+{t:"Self-check", self:["I can find relative pronouns in a text.","I know when to use who, which, whose, where and when.","I can join two sentences with a relative pronoun.","I checked if the AI examples were correct."]}
+]},
+B: {name:"Route B", intro:"Defining and non-defining clauses, commas and omitting the pronoun.",
+rule:`<table><tr><th></th><th>Defining clause</th><th>Non-defining clause</th></tr><tr><td><b>Function</b></td><td>Tells us which person or thing. Necessary.</td><td>Adds extra information. You can remove it.</td></tr><tr><td><b>Commas</b></td><td>No commas</td><td>Commas</td></tr><tr><td><b>that</b></td><td>Possible</td><td>Not possible</td></tr><tr><td><b>Omitting the pronoun</b></td><td>Possible when it is the object: The video (that) I watched…</td><td>Never</td></tr><tr><td><b>Example</b></td><td>Students <b>who</b> copy from AI learn very little.</td><td>My grandmother, <b>who</b> is 78, uses a voice assistant.</td></tr></table><p class="note">Also remember: whose (possession), where (place), when (time).</p>`,
+secs:[
+{t:"A. Notice", h:"Read the text. Then decide if each relative clause is defining (D) or non-defining (ND).", text:{title:"Living with AI",body:"My grandmother, who is 78, has started using a voice assistant. The device, which my uncle gave her for her birthday, reads her the news every morning. She lives in a village where the nearest library is 20 km away, so the assistant is useful. However, the answers it gives are not always correct. Last month, during the week when the local elections took place, it mixed up two candidates. My grandmother, whose memory is still excellent, noticed the mistake immediately. The thing I’ve learnt from her is simple: people who use AI need to keep thinking for themselves. Technology that we don’t question can easily mislead us."}, items:[
+{t:"sel",q:"who is 78",o:["D","ND"],a:1},
+{t:"sel",q:"which my uncle gave her",o:["D","ND"],a:1},
+{t:"sel",q:"where the nearest library is 20 km away",o:["D","ND"],a:0},
+{t:"sel",q:"when the local elections took place",o:["D","ND"],a:0},
+{t:"sel",q:"whose memory is still excellent",o:["D","ND"],a:1},
+{t:"sel",q:"who use AI",o:["D","ND"],a:0},
+{t:"sel",q:"that we don’t question",o:["D","ND"],a:0},
+{t:"multi",q:"A2. In which two phrases has the pronoun been omitted?",o:["the answers it gives","the week when the local elections took place","The thing I’ve learnt","Technology that we don’t question"],a:[0,2]},
+{t:"open",q:"A3. Why are there commas around “who is 78”?",model:"Because it is extra information: we already know who the grandmother is, so it is a non-defining clause."}]},
+{t:"B. Complete, punctuate, decide", h:"Choose the pronoun. Tick “commas” if the clause needs commas and “Ø” if the pronoun can be omitted.", items:[
+{t:"rcp",q:"My English teacher ___ uses AI to prepare quizzes says it saves time. (I have only one English teacher.)",p:["who"],c:true,z:false},
+{t:"rcp",q:"The essay ___ I wrote without any help got the best mark.",p:["which","that"],c:false,z:true},
+{t:"rcp",q:"ChatGPT ___ was released in 2022 became popular very quickly.",p:["which"],c:true,z:false},
+{t:"rcp",q:"Students ___ copy answers from AI learn very little.",p:["who","that"],c:false,z:false},
+{t:"rcp",q:"Marta ___ laptop has a built-in AI assistant lent it to me.",p:["whose"],c:true,z:false},
+{t:"rcp",q:"I’ll never forget the day ___ the school internet went down.",p:["when"],c:false,z:null},
+{t:"rcp",q:"Coimbra ___ my cousin studies computer science has a famous university.",p:["where"],c:true,z:false},
+{t:"rcp",q:"The information ___ the chatbot gave me was wrong.",p:["which","that"],c:false,z:true}]},
+{t:"C. Combine", h:"Write one sentence with a relative clause. Then choose D or ND.", items:[
+{t:"text",q:"Alan Turing was a British mathematician. He helped to break the Enigma code.",a:["Alan Turing, who helped to break the Enigma code, was a British mathematician","Alan Turing, who was a British mathematician, helped to break the Enigma code"],dn:1},
+{t:"text",q:"The video was a deepfake. Everyone shared it.",a:["The video that everyone shared was a deepfake","The video which everyone shared was a deepfake","The video everyone shared was a deepfake"],dn:0},
+{t:"text",q:"My school has a robotics club. Its members built a working robot arm.",a:["My school has a robotics club whose members built a working robot arm"],dn:0},
+{t:"text",q:"Wikipedia is written by volunteers. It is one of the most visited websites in the world.",a:["Wikipedia, which is one of the most visited websites in the world, is written by volunteers","Wikipedia, which is written by volunteers, is one of the most visited websites in the world"],dn:1},
+{t:"text",q:"I’ll never forget the moment. My code finally worked at that moment.",a:["I’ll never forget the moment when my code finally worked","I’ll never forget the moment my code finally worked"],dn:0}]},
+{t:"D. Evaluate the AI", h:"We asked an AI chatbot: “Write 4 sentences with non-defining relative clauses.” Judge each sentence.", items:[
+{t:"sel",q:"My phone, that I bought last year, is already slow.",o:["Correct and does what we asked","Incorrect","Correct, but it doesn’t do what we asked"],a:1,why:"“that” is not possible in a non-defining clause: My phone, which I bought last year, …"},
+{t:"sel",q:"The students who finished early can leave.",o:["Correct and does what we asked","Incorrect","Correct, but it doesn’t do what we asked"],a:2,why:"It is correct, but it is a defining clause."},
+{t:"sel",q:"Lisbon which is the capital of Portugal has many start-ups.",o:["Correct and does what we asked","Incorrect","Correct, but it doesn’t do what we asked"],a:1,why:"The commas are missing: Lisbon, which is the capital of Portugal, has many start-ups."},
+{t:"sel",q:"Marie Curie, whose research changed medicine, won two Nobel Prizes.",o:["Correct and does what we asked","Incorrect","Correct, but it doesn’t do what we asked"],a:0,why:"Correct, with commas and whose."}]},
+{t:"AI Support Zone", ai:{when:"After exercises B, C and D, and before you write.",can:"explain a rule you are not sure about; give you ideas and vocabulary for your text.",cant:"do the exercises, write your text or correct it.",prompt:"I’m a B2 student of English. Give me 5 ideas about how AI is changing teenagers’ lives, positive and negative, with useful vocabulary. Use short bullet points. Don’t write a text for me.",log:["My prompt","What I used from the answer","What I didn’t use, and why"]}},
+{t:"E. Write (no AI)", write:{task:"“How is AI changing the way teenagers learn?” Write an opinion paragraph.",min:100,max:120,req:["2 non-defining relative clauses","1 relative clause with the pronoun omitted","1 clause with whose, where or when","I wrote my paragraph myself, without AI"]}},
+{t:"Self-check", self:["I can tell defining from non-defining clauses.","I use commas correctly with non-defining clauses.","I know when I can omit the relative pronoun.","I can spot mistakes in an AI answer and explain them."]}
+]},
+C: {name:"Route C", intro:"Preposition + whom/which, most of whom, comment which and reduced relative clauses.",
+rule:`<table><tr><th>Structure</th><th>Example</th><th>Remember</th></tr><tr><td><b>Preposition + whom / which</b></td><td>The teacher <b>to whom</b> I spoke… / The app <b>on which</b> I rely…</td><td>Informal: the app I rely on. Never preposition + that.</td></tr><tr><td><b>Quantifier + of whom / of which</b></td><td>28 students, <b>most of whom</b> use AI…</td><td>Only non-defining, with commas.</td></tr><tr><td><b>Comment which</b></td><td>Many students use AI to cheat<b>, which</b> worries teachers.</td><td>Refers to the whole idea. Always a comma.</td></tr><tr><td><b>Reduced clause</b></td><td>Students <b>using</b> AI… / Texts <b>written</b> by AI…</td><td>-ing = active; past participle = passive.</td></tr></table>`,
+secs:[
+{t:"A. Notice", h:"Read the text. Then classify each structure.", text:{title:"Who writes the future?",body:"Generative AI, which can now produce essays in seconds, has changed the way schools think about homework. Some teachers, many of whom were sceptical at first, now use it to prepare materials. Others prefer tasks completed in class, which makes copying much harder. The problem with which most schools are struggling is not the technology itself but trust. A text written by a machine can look perfect and still contain facts that are simply invented. Students relying on AI for every answer may never develop the skills on which good writing depends. The real question, then, is not whether we use AI, but the purpose for which we use it."}, items:[
+...[["which can now produce essays",4],["many of whom were sceptical",1],["completed in class",3],["which makes copying much harder",2],["with which most schools are struggling",0],["written by a machine",3],["that are simply invented",4],["relying on AI",3],["on which good writing depends",0],["for which we use it",0]].map(([q,a])=>({t:"sel",q,o:["Preposition + which/whom","Quantifier + of whom","Comment which","Reduced clause","Other relative clause"],a})),
+{t:"text",q:"A2. Rewrite “the problem with which most schools are struggling” in an informal style.",a:["the problem that most schools are struggling with","the problem which most schools are struggling with","the problem most schools are struggling with"]}]},
+{t:"B. Transform", h:"Rewrite each sentence with the structure in brackets.", items:[
+{t:"text",q:"I spoke to a programmer. She was very helpful. (preposition + whom)",a:["The programmer to whom I spoke was very helpful"]},
+{t:"text",q:"There are 28 students in my class. Most of them use AI every day. (most of whom)",a:["There are 28 students in my class, most of whom use AI every day"]},
+{t:"text",q:"The chatbot invented a source. This surprised everyone. (comment which)",a:["The chatbot invented a source, which surprised everyone"]},
+{t:"text",q:"Students who are using AI should check every answer. (reduced clause)",a:["Students using AI should check every answer"]},
+{t:"text",q:"Essays which are written by AI often sound the same. (reduced clause)",a:["Essays written by AI often sound the same"]},
+{t:"text",q:"This is the platform. We depend on it for our online classes. (formal: preposition + which)",a:["This is the platform on which we depend for our online classes"]}]},
+{t:"C. Find and correct the mistake", h:"Rewrite the sentence correctly.", items:[
+{t:"text",q:"The students, most of who use AI, agreed with the new rules.",pre:"The students, most of who use AI, agreed with the new rules.",a:["The students, most of whom use AI, agreed with the new rules"]},
+{t:"text",q:"The app on that I rely is free.",pre:"The app on that I rely is free.",a:["The app on which I rely is free","The app I rely on is free","The app that I rely on is free","The app which I rely on is free"]},
+{t:"text",q:"He forgot his password what was really annoying.",pre:"He forgot his password what was really annoying.",a:["He forgot his password, which was really annoying"]},
+{t:"text",q:"The robot building by the students won a prize.",pre:"The robot building by the students won a prize.",a:["The robot built by the students won a prize"]},
+{t:"text",q:"My cousin, that studies AI, lives in Porto.",pre:"My cousin, that studies AI, lives in Porto.",a:["My cousin, who studies AI, lives in Porto"]}]},
+{t:"D. Evaluate the AI", h:"We asked an AI chatbot: “Rewrite in a more formal style: ‘This is the app I told you about.’” Judge each version.", items:[
+{t:"sel",q:"This is the app about which I told you.",o:["Correct","Incorrect","Correct, but the meaning changes"],a:0,why:"Correct and formal."},
+{t:"sel",q:"This is the app about that I told you.",o:["Correct","Incorrect","Correct, but the meaning changes"],a:1,why:"“that” cannot follow a preposition."},
+{t:"sel",q:"This is the app which I told you about it.",o:["Correct","Incorrect","Correct, but the meaning changes"],a:1,why:"It repeats the object (“it”)."},
+{t:"sel",q:"This is the app, about which I told you.",o:["Correct","Incorrect","Correct, but the meaning changes"],a:2,why:"The comma makes it non-defining, so the meaning changes."}]},
+{t:"AI Support Zone", ai:{when:"Before you write.",can:"suggest arguments for and against the topic; clarify one grammar doubt.",cant:"write, rewrite or correct your text.",prompt:"I’m a B2 student of English. Give me 3 arguments for and 3 arguments against this statement: “Schools should allow students to use AI for homework.” Use short bullet points only. Don’t write a paragraph for me.",log:["My prompt","Ideas I accepted","Ideas I rejected, and why","Was anything inaccurate or one-sided?"]}},
+{t:"E. Write (no AI)", write:{task:"“Schools should allow students to use AI for homework.” Do you agree? Write an argumentative text.",min:150,max:180,req:["1 preposition + which or whom","1 quantifier + of whom/of which, or 1 comment which","1 reduced relative clause","1 non-defining clause","I wrote my text myself, without AI"]}},
+{t:"Self-check", self:["I can use preposition + whom / which in a formal style.","I can use most of whom and comment which correctly.","I can reduce a relative clause with -ing or a past participle.","I can judge AI rewrites and explain what is wrong."]}
+]}};
+const DIAG=[
+{t:"choice",q:"A phone is a thing ___ you can call people with.",o:["who","which","where"],a:1},
+{t:"choice",q:"A school is a place ___ students learn.",o:["who","which","where"],a:2},
+{t:"choice",q:"That’s the girl ___ phone was stolen.",o:["who","who’s","whose"],a:2},
+{t:"choice",q:"My laptop, ___ I bought last year, is already slow.",o:["that","which"],a:1}];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”]/g,'"').replace(/\bi will\b/g,"i'll").replace(/\bthat is\b/g,"that's").replace(/\s+/g," ").replace(/\s+([,.!?])/g,"$1").replace(/[.!?\s]+$/,"").trim();
+const blank=q=>esc(q).replace("___",'<span class="blank"></span>');
+const PRON=["who","which","that","whose","where","when"];
+function item(id,it){
+ if(it.t==="choice")return `<li><div class="q">${blank(it.q)}</div><div class="opts">${it.o.map((o,k)=>`<label class="opt"><input type="radio" name="${id}" value="${k}"><span>${esc(o)}</span></label>`).join("")}</div><div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="text")return `<li><div class="q">${blank(it.q)}</div><input class="tx" name="${id}" id="${id}" autocomplete="off" spellcheck="false" value="${esc(it.pre||"")}" aria-label="Answer">${it.dn!==undefined?`<div class="opts" style="margin-top:8px">${["D","ND"].map((o,k)=>`<label class="opt"><input type="radio" name="${id}-dn" value="${k}"><span>${o}</span></label>`).join("")}</div>`:""}<div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="sel")return `<li><div class="q"><i>${esc(it.q)}</i></div><select name="${id}" id="${id}" aria-label="Choose"><option value="">Choose…</option>${it.o.map((o,k)=>`<option value="${k}">${esc(o)}</option>`).join("")}</select><div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="rcp")return `<li><div class="q">${blank(it.q)}</div><div class="rcp"><select name="${id}-p" aria-label="Pronoun"><option value="">pronoun…</option>${PRON.map(p=>`<option>${p}</option>`).join("")}</select><label><input type="checkbox" name="${id}-c" value="1">commas</label><label><input type="checkbox" name="${id}-z" value="1">Ø (can be omitted)</label></div><div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="multi")return `<li><div class="q">${esc(it.q)}</div>${it.o.map((o,k)=>`<label class="ck"><input type="checkbox" name="${id}" value="${k}"><i>${esc(o)}</i></label>`).join("")}<div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="open")return `<li><div class="q">${esc(it.q)}</div><textarea name="${id}" id="${id}" style="min-height:70px" aria-label="Answer"></textarea><div class="fb" id="fb-${id}"></div></li>`;
+ if(it.t==="tap"){let n=0;const ws=it.text.split(" ").map(w=>{const tg=w.startsWith("*");return `<button type="button" class="w" data-i="${n++}" data-t="${tg?1:0}">${esc(w.replace("*",""))}</button>`}).join(" ");return `<li style="list-style:none;margin-left:-1.6em"><div class="text"><h3>${esc(it.title)}</h3>${ws}</div><input type="hidden" name="${id}" value=""><div class="fb" id="fb-${id}"></div></li>`}
+}
+function sec(r,s,j){
+ const id=`${r}-${j}`;let h=`<section class="sec" id="s-${id}"><h2>${esc(s.t)}</h2>`;
+ if(s.h)h+=`<p class="help">${esc(s.h)}</p>`;
+ if(s.text)h+=`<div class="text" style="margin-bottom:16px"><h3>${esc(s.text.title)}</h3>${esc(s.text.body)}</div>`;
+ if(s.items)h+=`<ol class="items">${s.items.map((it,k)=>item(`${id}-${k}`,it)).join("")}</ol>`;
+ if(s.ai){const a=s.ai;h+=`<div class="ai"><p><b>When?</b> ${esc(a.when)}</p><p><b>You can ask the AI to:</b> ${esc(a.can)}</p><p><b>You can’t ask the AI to:</b> ${esc(a.cant)}</p><p><b>Suggested prompt</b></p><div class="prompt" id="pr-${r}">${esc(a.prompt)}</div><button class="btn" type="button" data-copy="pr-${r}">Copy the prompt</button><span class="note" id="cp-${r}"></span>${a.log.map((l,k)=>`<p style="margin:14px 0 4px"><label for="${id}-log${k}"><b>${esc(l)}</b></label></p><textarea id="${id}-log${k}" name="${id}-log${k}" style="min-height:60px"></textarea>`).join("")}<p class="note">Use AI only in class, with the school’s tool. Don’t include personal information in your prompts.</p></div>`}
+ if(s.write){const w=s.write;h+=`<p>${esc(w.task)} <b>(${w.min}–${w.max} words)</b></p><textarea id="${id}-text" name="${id}-text" data-min="${w.min}" data-max="${w.max}" ${w.detect?'data-detect="1"':""} style="min-height:200px" aria-label="Your text"></textarea><div class="count" id="wc-${r}">0 words</div>${w.req.map((q,k)=>`<label class="ck"><input type="checkbox" name="${id}-req${k}" value="1">${esc(q)}</label>`).join("")}<p class="note">Your writing is not checked here: your teacher will mark it.</p>`}
+ if(s.self)h+=`<div class="rule"><table><tr><th></th><th>Yes</th><th>Not yet</th></tr>${s.self.map((q,k)=>`<tr><td>${esc(q)}</td>${["yes","no"].map(v=>`<td><input type="radio" name="${id}-self${k}" value="${v}" aria-label="${v}" style="width:22px;height:22px"></td>`).join("")}</tr>`).join("")}</table></div>`;
+ return h+`</section>`;
+}
+document.getElementById("routes").innerHTML=Object.entries(R).map(([r,d])=>`<form class="route" id="f-${r}" data-r="${r}" onsubmit="return false" ${r==="A"?"":"hidden"}><div class="sticky" id="st-${r}" hidden></div><h2 style="font-size:32px">${d.name}</h2><p class="intro">${esc(d.intro)}</p><details open><summary style="cursor:pointer;font-weight:700">Rule box</summary><div class="rule">${d.rule}</div></details>${d.secs.map((s,j)=>sec(r,s,j)).join("")}<div class="btns"><button class="btn main" type="button" data-go="${r}">Submit and check</button><button class="btn" type="button" data-reset="${r}">Clear answers</button></div><div class="result" id="res-${r}" hidden></div></form>`).join("");
+document.getElementById("diag-body").innerHTML=`<ol class="items">${DIAG.map((it,k)=>item(`D-0-${k}`,it)).join("")}</ol>`;
+const KEY="rc-ai-world";let store={};try{store=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{const v={code:document.getElementById("code").value,route:cur};document.querySelectorAll("form [name]").forEach(el=>{if(el.type==="radio"||el.type==="checkbox"){if(el.checked)(v[el.name]=v[el.name]||[]).push(el.value)}else v[el.name]=el.value});store=v;try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
+const load=v=>{document.getElementById("code").value=v.code||"";document.querySelectorAll("form [name]").forEach(el=>{const x=v[el.name];if(x===undefined)return;if(el.type==="radio"||el.type==="checkbox")el.checked=[].concat(x).includes(el.value);else el.value=x});document.querySelectorAll("input[type=hidden]").forEach(h=>{const on=h.value?h.value.split(","):[];h.closest("li").querySelectorAll(".w").forEach(b=>b.classList.toggle("on",on.includes(b.dataset.i)))});document.querySelectorAll("textarea[data-min]").forEach(wc)};
+let cur="A";
+const show=r=>{cur=r;document.querySelectorAll(".route").forEach(f=>f.hidden=f.dataset.r!==r);document.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected",t.dataset.r===r));if(location.hash!=="#route-"+r.toLowerCase())history.replaceState(null,"","#route-"+r.toLowerCase())};
+const words=t=>(t.trim().match(/\S+/g)||[]).length;
+function wc(ta){const r=ta.closest("form").dataset.r,n=words(ta.value),mn=+ta.dataset.min,mx=+ta.dataset.max;let s=`<b>${n} words</b> (target ${mn}–${mx}) ${n<mn?"· "+(mn-n)+" more to go":n>mx?"· "+(n-mx)+" too many":"· within the limit"}`;if(ta.dataset.detect){const f=PRON.filter(p=>new RegExp("\\b"+p+"\\b","i").test(ta.value));s+=` · relative pronouns found: ${f.length?f.join(", "):"none"}`}document.getElementById("wc-"+r).innerHTML=s}
+function grade(id,it){
+ const fb=document.getElementById("fb-"+id),f=fb.closest("form"),get=n=>f.querySelector(`[name="${n}"]`),set=(ok,msg)=>{fb.className="fb "+(ok===null?"info":ok?"ok":"bad");fb.innerHTML=msg;return ok?1:0};
+ if(it.t==="choice"){const c=f.querySelector(`[name="${id}"]:checked`);return c&&+c.value===it.a?set(true,"✓ Correct"):set(false,`✗ Correct answer: <b>${esc(it.o[it.a])}</b>`)}
+ if(it.t==="sel"){const v=get(id).value,ok=v!==""&&+v===it.a;return set(ok,(ok?"✓ Correct":`✗ Correct answer: <b>${esc(it.o[it.a])}</b>`)+(it.why?` · ${esc(it.why)}`:""))}
+ if(it.t==="text"){const v=norm(get(id).value),ok=it.a.some(a=>norm(a)===v);let dnok=true;if(it.dn!==undefined){const c=f.querySelector(`[name="${id}-dn"]:checked`);dnok=!!c&&+c.value===it.dn}if(ok&&dnok)return set(true,"✓ Correct");const msg=ok?"✓ Correct sentence":`✗ This doesn’t match the model answer. Compare: <b>${esc(it.a[0])}.</b>${it.a.length>1?" (other answers are possible)":""}`;return set(false,msg+(dnok?"":` · This clause is <b>${it.dn?"ND":"D"}</b>.`))}
+ if(it.t==="rcp"){const p=get(id+"-p").value,c=get(id+"-c").checked,z=get(id+"-z").checked,bad=[];if(!it.p.includes(p))bad.push(`pronoun: <b>${it.p.join(" / ")}</b>`);if(c!==it.c)bad.push(it.c?"it needs <b>commas</b> (non-defining)":"<b>no commas</b> (defining)");if(it.z!==null&&z!==it.z)bad.push(it.z?"the pronoun <b>can</b> be omitted (it is the object)":"the pronoun <b>can’t</b> be omitted");return bad.length?set(false,"✗ "+bad.join(" · ")):set(true,"✓ Correct")}
+ if(it.t==="multi"){const v=[...f.querySelectorAll(`[name="${id}"]:checked`)].map(x=>+x.value).sort().join();return v===it.a.join()?set(true,"✓ Correct"):set(false,`✗ Correct answers: <b>${it.a.map(k=>esc(it.o[k])).join("</b> and <b>")}</b>`)}
+ if(it.t==="open"){set(null,`Model answer: ${esc(it.model)}`);return null}
+ if(it.t==="tap"){const on=(get(id).value||"").split(",").filter(Boolean);let ok=true;fb.closest("li").querySelectorAll(".w").forEach(b=>{const t=b.dataset.t==="1",s=on.includes(b.dataset.i);b.classList.remove("ok","bad","miss");if(t&&s)b.classList.add("ok");else if(!t&&s){b.classList.add("bad");ok=false}else if(t){b.classList.add("miss");ok=false}});return ok?set(true,"✓ You found them all"):set(false,"✗ Green: correct · crossed out: not a relative pronoun · dashed: missing")}
+}
+function submit(r){
+ const d=R[r];let tot=0,max=0,rows=[];
+ d.secs.forEach((s,j)=>{if(!s.items)return;let a=0,m=0;s.items.forEach((it,k)=>{const g=grade(`${r}-${j}-${k}`,it);if(g!==null){a+=g;m++}});tot+=a;max+=m;rows.push([s.t,a,m])});
+ const ta=document.getElementById(`${r}-${d.secs.findIndex(s=>s.write)}-text`),n=words(ta.value);
+ const res=document.getElementById("res-"+r);res.hidden=false;
+ res.innerHTML=`<h2 style="font-size:24px">Result · ${esc(d.name)}</h2><div class="big">${tot} / ${max}</div><p class="note">correct answers in the automatically checked exercises</p><div class="rows">${rows.map(([t,a,m])=>`<div class="row"><span>${esc(t)}</span><div class="bar"><i style="width:${m?a/m*100:0}%"></i></div><span class="num">${a} / ${m}</span></div>`).join("")}</div><p>Final text: <b>${n} words</b> (target ${ta.dataset.min}–${ta.dataset.max}). Your teacher will mark your text and your AI log.</p><div class="btns"><button class="btn main" type="button" data-share="${r}">Copy results for your teacher</button></div><p class="note" id="sh-${r}"></p>`;
+ const st=document.getElementById("st-"+r);st.hidden=false;st.textContent=`${d.name}: ${tot} / ${max} correct · Check the answers in red and submit again.`;
+ st.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+ res.dataset.sum=JSON.stringify({tot,max,rows,n});
+}
+function summary(r){
+ const d=R[r],f=document.getElementById("f-"+r),s=JSON.parse(document.getElementById("res-"+r).dataset.sum||"{}");
+ let t=`Relative Clauses in an AI World (Ana Dias) · ${d.name}\nCode: ${document.getElementById("code").value||"(no code)"}\nDate: ${new Date().toLocaleDateString("en-GB")}\nResult: ${s.tot} / ${s.max}\n`;
+ (s.rows||[]).forEach(([a,b,c])=>t+=`- ${a}: ${b} / ${c}\n`);
+ d.secs.forEach((x,j)=>{if(x.ai)x.ai.log.forEach((l,k)=>t+=`\n${l}: ${f.querySelector(`[name="${r}-${j}-log${k}"]`).value}`);if(x.write)t+=`\n\nFinal text (${s.n} words):\n${f.querySelector(`[name="${r}-${j}-text"]`).value}\n`;if(x.self)t+=`\nSelf-check:\n`+x.self.map((q,k)=>{const c=f.querySelector(`[name="${r}-${j}-self${k}"]:checked`);return `- ${q} ${c?(c.value==="yes"?"Yes":"Not yet"):"—"}`}).join("\n")});
+ return t;
+}
+document.addEventListener("click",e=>{
+ const b=e.target.closest("button");if(!b)return;
+ if(b.classList.contains("tab")){show(b.dataset.r);save()}
+ else if(b.classList.contains("w")){b.classList.toggle("on");b.classList.remove("ok","bad","miss");const li=b.closest("li");li.querySelector("input[type=hidden]").value=[...li.querySelectorAll(".w.on")].map(x=>x.dataset.i).join(",");save()}
+ else if(b.dataset.go)submit(b.dataset.go);
+ else if(b.dataset.reset){const r=b.dataset.reset,f=document.getElementById("f-"+r);if(!b.dataset.sure){b.dataset.sure=1;b.textContent="Click again to confirm";return}delete b.dataset.sure;b.textContent="Clear answers";f.reset();f.querySelectorAll("input[type=hidden]").forEach(h=>h.value="");f.querySelectorAll(".w").forEach(w=>w.className="w");R[r].secs.forEach((s,j)=>s.items&&s.items.forEach((it,k)=>{if(it.pre)f.querySelector(`[name="${r}-${j}-${k}"]`).value=it.pre}));f.querySelectorAll(".fb").forEach(x=>{x.className="fb";x.innerHTML=""});document.getElementById("res-"+r).hidden=true;document.getElementById("st-"+r).hidden=true;f.querySelectorAll("textarea[data-min]").forEach(wc);save()}
+ else if(b.dataset.copy){const r=b.dataset.copy.slice(3),el=document.getElementById("cp-"+r);navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent).then(()=>el.textContent=" Copied.",()=>el.textContent=" Select the prompt and copy it.")}
+ else if(b.dataset.share){const r=b.dataset.share,t=summary(r),el=document.getElementById("sh-"+r);navigator.clipboard.writeText(t).then(()=>el.textContent="Copied. Paste it into your Moodle or Classroom assignment, or send it to your teacher.",()=>{el.innerHTML=`It couldn’t be copied automatically. Select the text below and copy it:<textarea class="copybox" readonly>${esc(t)}</textarea>`})}
+ else if(b.id==="diag-go"){let n=0;DIAG.forEach((it,k)=>n+=grade(`D-0-${k}`,it));const r=n<=2?"A":n===3?"B":"C",fb=document.getElementById("diag-fb");fb.className="fb info";fb.innerHTML=`You got ${n} out of 4. Suggested route: <b>Route ${r}</b>. <button class="btn main" type="button" data-start="${r}" style="margin-left:8px">Start Route ${r}</button>`}
+ else if(b.dataset.start){show(b.dataset.start);document.getElementById("diag").open=false;save();document.getElementById("f-"+b.dataset.start).scrollIntoView()}
+});
+document.addEventListener("input",e=>{if(e.target.matches("textarea[data-min]"))wc(e.target);save()});
+document.addEventListener("change",save);
+const start=data=>{const v=data&&Object.keys(data).length?data:store;load(v);const h=(location.hash.match(/^#route-([abc])$/)||[])[1];show(h?h.toUpperCase():(v.route||"A"))};
+window.claude?.hot?.snapshot?.(()=>store);
+window.claude?.hot?.ready?window.claude.hot.ready(start):start(window.claude?.hot?.data??{});
+}
+</script>
+<script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}</script>
+</body>
+</html>
