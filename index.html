@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Relative Clauses Routes</title>
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#e9e1fb">
+<meta name="theme-color" content="#e0f4f2">
 <meta name="author" content="Ana Dias">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -18,10 +18,10 @@
 /* VOICE everyday learning: a calm, clear workbook for 15-year-olds
    IDEA a printed exercise booklet with a lilac cover band and answer boxes the teacher marks
    PICTURE the working exercises themselves; after submitting, ticks and a score bar per section
-   COLOUR light purple cover #e9e1fb, violet #6a4bc4 for actions, green only for right, coral #ff6f59 for "review"
+   COLOUR light teal cover #e0f4f2, +PROFESSOR teal #009c8f / #00796f for actions, green only for right, coral #ff6f59 for "review"
    TYPE Inter Tight 700 for titles + Inter for text
    LAYOUT laptop: cover band with title, code and route tabs; one 860px column of sections. Phone: same, stacked */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16131f);--ink:light-dark(#1d1830,#efeaf8);--muted:light-dark(#544d66,#b5aecb);--line:light-dark(#ddd7e8,#352e47);--panel:light-dark(#f6f3fb,#1e1a2b);--hdr:light-dark(#e9e1fb,#2a1f45);--hdrink:light-dark(#2b1a57,#f1ecff);--hdrsub:light-dark(#4b3a7a,#cfc3ef);--tabbg:light-dark(#d4c6f6,#3b2d63);--pur:light-dark(#6a4bc4,#b9a3f5);--purink:light-dark(#ffffff,#1b1233);--sel:#ece4ff;--ok:light-dark(#1d6b3a,#a3e3ad);--okbg:light-dark(#e6f5c8,#173a22);--bad:light-dark(#a8321c,#ff9b88);--badbg:light-dark(#ffe7e1,#3b1e18);--coral:#ff6f59}
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#101a19);--ink:light-dark(#13201f,#e8f3f1);--muted:light-dark(#4a5c5a,#a9c2be);--line:light-dark(#d5e3e1,#2b3f3d);--panel:light-dark(#f3f8f7,#172422);--hdr:light-dark(#e0f4f2,#0f2e2b);--hdrink:light-dark(#00423c,#e3f7f4);--hdrsub:light-dark(#2f625c,#b5dcd6);--tabbg:light-dark(#bfe6e1,#1d4a45);--pur:light-dark(#00796f,#5fd3c6);--purink:light-dark(#ffffff,#062320);--sel:#d7f1ed;--ok:light-dark(#1d6b3a,#a3e3ad);--okbg:light-dark(#e6f5c8,#173a22);--bad:light-dark(#a8321c,#ff9b88);--badbg:light-dark(#ffe7e1,#3b1e18);--coral:#ff6f59}
 :root[data-theme=light]{color-scheme:light}
 :root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
@@ -35,7 +35,7 @@ h1,h2,h3{font-family:"Inter Tight",Inter,Arial,sans-serif;letter-spacing:-.02em;
 .by{font-weight:600}
 .idrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
 .idrow label{font-weight:600}
-.idrow input{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #8c74d6;background:#fff;color:#1d1830;width:11em}
+.idrow input{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #009c8f;background:#fff;color:#13201f;width:11em}
 .tabs{display:flex;gap:6px;margin-top:24px;flex-wrap:wrap}
 .tab{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border:0;border-radius:10px 10px 0 0;background:var(--tabbg);color:var(--hdrink);cursor:pointer}
 .exitlink{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border-radius:10px 10px 0 0;background:var(--pur);color:var(--purink);text-decoration:none;display:inline-flex;align-items:center;margin-left:auto}
@@ -67,7 +67,7 @@ ol.items{padding-left:1.6em;margin:0;display:grid;gap:14px}
 .opt{position:relative}
 .opt input{position:absolute;opacity:0;inset:0}
 .opt span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:2px solid var(--line);border-radius:22px;cursor:pointer;background:var(--bg)}
-.opt input:checked+span{border-color:var(--pur);background:var(--sel);color:#1d1830;font-weight:600}
+.opt input:checked+span{border-color:var(--pur);background:var(--sel);color:#13201f;font-weight:600}
 .opt input:focus-visible+span{outline:3px solid var(--coral);outline-offset:2px}
 input.tx,select,textarea{font:16px Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
 select{width:auto;min-height:44px}
@@ -90,6 +90,9 @@ textarea{min-height:120px;resize:vertical}
 .count b{color:var(--ink)}
 .result{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:24px}
 .result[hidden]{display:none}
+.exitbox{margin-top:18px;padding:16px 18px;border-radius:12px;background:var(--hdr);color:var(--ink);border-left:6px solid var(--pur)}
+.exitbox.locked{background:var(--panel);border-left-color:var(--coral)}
+a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .big{font:700 clamp(36px,6vw,56px)/1 "Inter Tight",Inter,sans-serif}
 .rows{display:grid;gap:8px;margin:16px 0}
 .row{display:grid;grid-template-columns:minmax(0,12em) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px}
@@ -110,7 +113,7 @@ textarea{min-height:120px;resize:vertical}
 <div class="in">
 <h1>Relative Clauses in an AI World</h1>
 <p class="by">Created by Ana Dias</p>
-<p>English · Year 10 · Choose your route, answer the questions and click <b>Submit and check</b> at the end.</p>
+<p>English · Year 10 · Choose your route, answer all the questions and click <b>Submit and check</b> at the end. When you have finished your route, do the <b>Exit ticket</b> (it opens after you finish).</p>
 <div class="idrow"><label for="code">Your code</label><input id="code" autocomplete="off" placeholder="e.g. 10B-07"><span class="note" style="color:var(--hdrsub)">Don’t write your name.</span></div>
 <div class="tabs" role="tablist">
 <button class="tab" role="tab" id="tab-A" data-r="A" aria-selected="true">Route A</button>
@@ -290,6 +293,13 @@ function submit(r){
  const st=document.getElementById("st-"+r);st.hidden=false;st.textContent=`${d.name}: ${tot} / ${max} correct · Check the answers in red and submit again.`;
  st.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
  res.dataset.sum=JSON.stringify({tot,max,rows,n});
+ const f=document.getElementById("f-"+r);let miss=0;
+ f.querySelectorAll(".fb").forEach(fb=>{const li=fb.closest("li");if(!li||fb.id.startsWith("fb-D-"))return;const els=[...li.querySelectorAll("input,select,textarea")];if(!els.length)return;const ok=els.some(e=>(e.type==="radio"||e.type==="checkbox")?e.checked:String(e.value).trim()!=="");if(!ok)miss++});
+ const need=+ta.dataset.min||0,done=miss===0&&n>=need,ex=document.createElement("div");ex.className="exitbox"+(done?"":" locked");
+ if(done){try{localStorage.setItem("rc-done",JSON.stringify({route:r,code:document.getElementById("code").value,tot,max,at:Date.now()}))}catch(e){}
+  ex.innerHTML=`<b>Well done! You finished ${esc(d.name)}.</b><br>Now do the Exit ticket on your own, without AI.<div class="btns"><a class="btn main" href="exit-ticket.html">Go to the Exit ticket →</a></div>`}
+ else ex.innerHTML=`<b>The Exit ticket is still locked.</b><br>To open it, ${miss?`answer all the exercises (<b>${miss}</b> still empty)`:""}${miss&&n<need?" and ":""}${n<need?`write at least <b>${need} words</b> in your final text (now: ${n})`:""}, then click <b>Submit and check</b> again.`;
+ res.appendChild(ex);
 }
 function summary(r){
  const d=R[r],f=document.getElementById("f-"+r),s=JSON.parse(document.getElementById("res-"+r).dataset.sum||"{}");
