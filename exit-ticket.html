@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exit Ticket · Relative Clauses</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#e9e1fb">
+<meta name="author" content="Ana Dias">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=Inter:wght@400;600;700&display=swap">
+<style>
+
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#16131f);--ink:light-dark(#1d1830,#efeaf8);--muted:light-dark(#544d66,#b5aecb);--line:light-dark(#ddd7e8,#352e47);--panel:light-dark(#f6f3fb,#1e1a2b);--hdr:light-dark(#e9e1fb,#2a1f45);--hdrink:light-dark(#2b1a57,#f1ecff);--hdrsub:light-dark(#4b3a7a,#cfc3ef);--tabbg:light-dark(#d4c6f6,#3b2d63);--pur:light-dark(#6a4bc4,#b9a3f5);--purink:light-dark(#ffffff,#1b1233);--sel:#ece4ff;--ok:light-dark(#1d6b3a,#a3e3ad);--okbg:light-dark(#e6f5c8,#173a22);--bad:light-dark(#a8321c,#ff9b88);--badbg:light-dark(#ffe7e1,#3b1e18);--coral:#ff6f59}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 Inter,Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-family:"Inter Tight",Inter,Arial,sans-serif;letter-spacing:-.02em;line-height:1.1;margin:0}
+.cover{background:var(--hdr);color:var(--hdrink);padding:clamp(24px,4vw,48px) max(5vw,16px) 0}
+.cover .in{max-width:860px;margin:0 auto}
+.cover h1{font-size:clamp(32px,5vw,48px);text-wrap:balance}
+.cover p{margin:8px 0 0;color:var(--hdrsub);max-width:60ch}
+.by{font-weight:600}
+.idrow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.idrow label{font-weight:600}
+.idrow input{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #8c74d6;background:#fff;color:#1d1830;width:11em}
+.tabs{display:flex;gap:6px;margin-top:24px;flex-wrap:wrap}
+.tab{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border:0;border-radius:10px 10px 0 0;background:var(--tabbg);color:var(--hdrink);cursor:pointer}
+.tab[aria-selected=true]{background:var(--bg);color:var(--ink)}
+.tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+main{max-width:860px;margin:0 auto;padding:24px max(16px,3vw) 64px}
+.diag{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:28px}
+.diag summary{cursor:pointer;font-weight:700;font-size:17px}
+.route[hidden]{display:none}
+.intro{color:var(--muted);margin:0 0 20px}
+section.sec{border-top:1px solid var(--line);padding:24px 0}
+section.sec h2{font-size:24px;margin-bottom:6px}
+.help{color:var(--muted);margin:0 0 14px}
+.rule{overflow-x:auto;margin:4px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel)}
+.text{background:var(--panel);border-radius:10px;padding:16px 18px;line-height:2}
+.text h3{font-size:18px;margin-bottom:6px;line-height:1.3}
+.w{font:inherit;color:inherit;background:none;border:0;border-radius:6px;padding:2px 3px;cursor:pointer;line-height:1.6}
+.w.on{background:#ffe08a;color:#13201c;text-decoration:underline}
+.w.ok{background:var(--okbg);color:var(--ok);font-weight:700}
+.w.bad{background:var(--badbg);color:var(--bad);text-decoration:line-through}
+.w.miss{outline:2px dashed var(--bad)}
+ol.items{padding-left:1.6em;margin:0;display:grid;gap:14px}
+.q{margin-bottom:6px}
+.blank{display:inline-block;min-width:4em;border-bottom:2px solid var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0}
+.opt span{display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;border:2px solid var(--line);border-radius:22px;cursor:pointer;background:var(--bg)}
+.opt input:checked+span{border-color:var(--pur);background:var(--sel);color:#1d1830;font-weight:600}
+.opt input:focus-visible+span{outline:3px solid var(--coral);outline-offset:2px}
+input.tx,select,textarea{font:16px Inter,Arial,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+select{width:auto;min-height:44px}
+textarea{min-height:120px;resize:vertical}
+.rcp{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.rcp label{display:inline-flex;gap:8px;align-items:center;min-height:44px}
+.rcp input[type=checkbox],.ck input{width:22px;height:22px}
+.ck{display:flex;gap:10px;align-items:center;min-height:44px}
+.fb{margin-top:6px;padding:8px 12px;border-radius:8px;font-size:15px}
+.fb:empty{display:none}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.bad{background:var(--badbg);color:var(--bad)}
+.fb.info{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.ai{border:2px solid var(--pur);border-radius:12px;padding:16px 18px}
+.prompt{background:var(--panel);border-radius:8px;padding:12px 14px;font-style:italic;margin:8px 0}
+.btn{font:600 16px Inter,Arial,sans-serif;min-height:48px;padding:10px 20px;border-radius:10px;border:2px solid var(--pur);background:var(--bg);color:var(--ink);cursor:pointer}
+.btn.main{background:var(--pur);color:var(--purink);border-color:var(--pur)}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.count{font-size:15px;color:var(--muted);margin-top:6px}
+.count b{color:var(--ink)}
+.result{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:24px}
+.result[hidden]{display:none}
+.big{font:700 clamp(36px,6vw,56px)/1 "Inter Tight",Inter,sans-serif}
+.rows{display:grid;gap:8px;margin:16px 0}
+.row{display:grid;grid-template-columns:minmax(0,12em) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:15px}
+.bar{height:12px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--pur)}
+.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+.sticky{position:sticky;top:0;z-index:5;background:var(--pur);color:var(--purink);padding:10px 16px;border-radius:0 0 10px 10px;font-weight:600;margin:-24px 0 16px}
+.sticky[hidden]{display:none}
+.copybox{width:100%;min-height:160px;margin-top:10px}
+.note{font-size:14px;color:var(--muted)}
+.foot{border-top:1px solid var(--line);color:var(--muted);font-size:14px;text-align:center;padding:20px 16px 32px}
+@media(max-width:600px){.row{grid-template-columns:minmax(0,1fr) auto}.row .bar{grid-column:1/-1;order:3}.tab{padding:10px 14px;font-size:16px}table{font-size:14px}}
+@media(prefers-reduced-motion:no-preference){.fb{animation:pop .25s ease-out}@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}}
+
+.back{display:inline-block;margin-top:16px;color:var(--hdrink);font-weight:600}
+.idrow select{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #8c74d6;background:#fff;color:#1d1830}
+</style>
+</head>
+<body>
+<header class="cover">
+<div class="in">
+<h1>Exit Ticket</h1>
+<p class="by">Created by Ana Dias</p>
+<p>Relative Clauses in an AI World · English · Year 10. Answer on your own, without AI, and click <b>Submit and check</b>.</p>
+<div class="idrow"><label for="code">Your code</label><input id="code" autocomplete="off" placeholder="e.g. 10B-07">
+<label for="route">Route</label><select id="route"><option value="">–</option><option>A</option><option>B</option><option>C</option></select></div>
+<a class="back" href="./">← Back to the routes</a>
+<div style="height:24px"></div>
+</div>
+</header>
+<main>
+<form id="f" onsubmit="return false">
+<section class="sec" style="border-top:0">
+<h2>A. Choose the correct word</h2>
+<p class="help">One answer for each sentence.</p>
+<ol class="items" id="mcq"></ol>
+</section>
+<section class="sec">
+<h2>B. Write one sentence</h2>
+<p class="help">Write one sentence about technology with a relative pronoun (who, which, that, whose, where, when).</p>
+<input class="tx" id="sent" name="sent" autocomplete="off">
+<div class="fb" id="fb-sent"></div>
+</section>
+<section class="sec">
+<h2>C. Think about the AI</h2>
+<label class="q" for="r1" style="display:block;font-weight:600">Something the AI helped me understand:</label>
+<input class="tx" id="r1" name="r1" autocomplete="off">
+<label class="q" for="r2" style="display:block;font-weight:600;margin-top:14px">A mistake or a useless answer from the AI (if any):</label>
+<input class="tx" id="r2" name="r2" autocomplete="off">
+</section>
+<div class="btns"><button class="btn main" type="button" id="go">Submit and check</button><button class="btn" type="button" id="clear">Clear answers</button></div>
+</form>
+<div class="result" id="res" hidden></div>
+</main>
+<footer class="foot">© 2026 Ana Dias · Relative Clauses in an AI World · English, Year 10</footer>
+<script>
+const ITEMS=[
+{q:"A tablet is a device ___ you can read e-books on.",o:["who","which","where"],a:"which",why:"a thing → which (or that)"},
+{q:"A library is a place ___ you can borrow books.",o:["which","where","when"],a:"where",why:"a place + a full clause → where"},
+{q:"He’s the YouTuber ___ videos have millions of views.",o:["who","who’s","whose"],a:"whose",why:"possession (his videos) → whose"},
+{q:"Lisbon, ___ hosts the Web Summit, is a big tech city.",o:["that","which"],a:"which",why:"non-defining clause (with commas) → which, never that"}];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("mcq").innerHTML=ITEMS.map((it,k)=>`<li><div class="q">${esc(it.q).replace("___",'<span class="blank"></span>')}</div><div class="opts" role="radiogroup">${it.o.map(o=>`<label class="opt"><input type="radio" name="m${k}" value="${esc(o)}"><span>${esc(o)}</span></label>`).join("")}</div><div class="fb" id="fb-${k}"></div></li>`).join("");
+const KEY="rc-exit-ticket";let st={};try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+let main={};try{main=JSON.parse(localStorage.getItem("rc-ai-world")||"{}")}catch(e){}
+const $=id=>document.getElementById(id);
+$("code").value=st.code||main.code||"";$("route").value=st.route||main.route||"";
+["sent","r1","r2"].forEach(n=>{if(st[n])$(n).value=st[n]});
+ITEMS.forEach((it,k)=>{if(st["m"+k]){const r=document.querySelector(`input[name=m${k}][value="${CSS.escape(st["m"+k])}"]`);if(r)r.checked=true}});
+const save=()=>{const v={code:$("code").value,route:$("route").value,sent:$("sent").value,r1:$("r1").value,r2:$("r2").value};ITEMS.forEach((it,k)=>{const c=document.querySelector(`input[name=m${k}]:checked`);if(c)v["m"+k]=c.value});st=v;try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
+document.addEventListener("input",save);document.addEventListener("change",save);
+const PRON=/\b(who|whom|which|that|whose|where|when)\b/i;
+$("go").onclick=()=>{
+ save();let n=0;const lines=[];
+ ITEMS.forEach((it,k)=>{const c=document.querySelector(`input[name=m${k}]:checked`),v=c?c.value:"",ok=v===it.a,fb=$("fb-"+k);if(ok)n++;
+  fb.className="fb "+(ok?"ok":"bad");fb.textContent=ok?"✓ Correct.":`✗ ${v?"Not quite":"No answer"}. Correct answer: ${it.a} (${it.why}).`;
+  lines.push(`${k+1}. ${v||"–"} ${ok?"✓":"✗ ("+it.a+")"}`)});
+ const s=$("sent").value.trim(),fs=$("fb-sent"),w=s?s.split(/\s+/).length:0;
+ fs.className="fb info";fs.textContent=!s?"You haven’t written a sentence yet.":PRON.test(s)?"Your sentence has a relative pronoun. Your teacher will check it.":"I can’t find a relative pronoun (who, which, that, whose, where, when). Check your sentence.";
+ const r=$("res");r.hidden=false;
+ r.innerHTML=`<h2 style="font-size:24px">Exit ticket · ${esc($("code").value||"no code")}</h2><div class="big">${n} / 4</div><p class="note">correct answers in part A</p><div class="rows"><div class="row"><span>Part A</span><div class="bar"><i style="width:${n/4*100}%"></i></div><span class="num">${n} / 4</span></div></div><p>Compare with your quick test at the start of the lesson: did you get more right?</p><div class="btns"><button class="btn main" type="button" id="share">Copy results for your teacher</button></div><p class="note" id="sh"></p>`;
+ const text=[`EXIT TICKET – Relative Clauses in an AI World`,`Code: ${$("code").value||"–"} · Route: ${$("route").value||"–"}`,`Part A: ${n}/4`,...lines,`Part B (sentence, ${w} words): ${s||"–"}`,`Part C – AI helped me understand: ${$("r1").value.trim()||"–"}`,`Part C – AI mistake / useless answer: ${$("r2").value.trim()||"–"}`].join("\n");
+ $("share").onclick=async()=>{const sh=$("sh");try{await navigator.clipboard.writeText(text);sh.textContent="Copied. Paste it in Classroom / Moodle for your teacher."}catch(e){sh.innerHTML=`Copy this text and paste it for your teacher:<textarea class="copybox" readonly>${esc(text)}</textarea>`;sh.querySelector("textarea").select()}};
+ r.scrollIntoView({behavior:"smooth"});
+};
+$("clear").onclick=e=>{const b=e.target;if(!b.dataset.sure){b.dataset.sure=1;b.textContent="Click again to confirm";return}delete b.dataset.sure;b.textContent="Clear answers";$("f").reset();document.querySelectorAll(".fb").forEach(f=>{f.textContent="";f.className="fb"});$("res").hidden=true;save()};
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+</body>
+</html>

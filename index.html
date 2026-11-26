@@ -38,6 +38,7 @@ h1,h2,h3{font-family:"Inter Tight",Inter,Arial,sans-serif;letter-spacing:-.02em;
 .idrow input{font:16px Inter,Arial,sans-serif;padding:10px 12px;border-radius:8px;border:2px solid #8c74d6;background:#fff;color:#1d1830;width:11em}
 .tabs{display:flex;gap:6px;margin-top:24px;flex-wrap:wrap}
 .tab{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border:0;border-radius:10px 10px 0 0;background:var(--tabbg);color:var(--hdrink);cursor:pointer}
+.exitlink{font:600 17px Inter,Arial,sans-serif;padding:12px 20px;min-height:48px;border-radius:10px 10px 0 0;background:var(--pur);color:var(--purink);text-decoration:none;display:inline-flex;align-items:center;margin-left:auto}
 .tab[aria-selected=true]{background:var(--bg);color:var(--ink)}
 .tab:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
 main{max-width:860px;margin:0 auto;padding:24px max(16px,3vw) 64px}
@@ -115,6 +116,7 @@ textarea{min-height:120px;resize:vertical}
 <button class="tab" role="tab" id="tab-A" data-r="A" aria-selected="true">Route A</button>
 <button class="tab" role="tab" id="tab-B" data-r="B" aria-selected="false">Route B</button>
 <button class="tab" role="tab" id="tab-C" data-r="C" aria-selected="false">Route C</button>
+<a class="exitlink" href="exit-ticket.html">Exit ticket</a>
 </div>
 </div>
 </header>
