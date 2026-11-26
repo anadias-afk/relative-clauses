@@ -133,6 +133,16 @@ textarea{min-height:120px;resize:vertical}
 <label class="q" for="r2" style="display:block;font-weight:600;margin-top:14px">A mistake or a useless answer from the AI (if any):</label>
 <input class="tx" id="r2" name="r2" autocomplete="off">
 </section>
+<section class="sec">
+<h2>D. About this lesson</h2>
+<p class="help">Quick questionnaire. There are no right or wrong answers.</p>
+<ol class="items">
+<li><div class="q">Did the AI help you understand the rule?</div><div class="opts" role="radiogroup"><label class="opt"><input type="radio" name="q1" value="Yes, a lot"><span>Yes, a lot</span></label><label class="opt"><input type="radio" name="q1" value="A little"><span>A little</span></label><label class="opt"><input type="radio" name="q1" value="No"><span>No</span></label></div><label class="q" for="q1why" style="display:block;margin-top:10px">Why?</label><input class="tx" id="q1why" name="q1why" autocomplete="off"></li>
+<li><div class="q">Did the AI give you a wrong or useless example?</div><div class="opts" role="radiogroup"><label class="opt"><input type="radio" name="q2" value="Yes"><span>Yes</span></label><label class="opt"><input type="radio" name="q2" value="No"><span>No</span></label><label class="opt"><input type="radio" name="q2" value="I’m not sure"><span>I’m not sure</span></label></div><p class="help" style="margin-top:8px">If yes, write it in part C.</p></li>
+<li><div class="q">Your route was…</div><div class="opts" role="radiogroup"><label class="opt"><input type="radio" name="q3" value="too easy"><span>too easy</span></label><label class="opt"><input type="radio" name="q3" value="just right"><span>just right</span></label><label class="opt"><input type="radio" name="q3" value="too difficult"><span>too difficult</span></label></div></li>
+<li><label class="q" for="q4" style="display:block">One thing you would change in this lesson:</label><input class="tx" id="q4" name="q4" autocomplete="off"></li>
+</ol>
+</section>
 <div class="btns"><button class="btn main" type="button" id="go">Submit and check</button><button class="btn" type="button" id="clear">Clear answers</button></div>
 </form>
 <div class="result" id="res" hidden></div>
@@ -152,9 +162,10 @@ const KEY="rc-exit-ticket";let st={};try{st=JSON.parse(localStorage.getItem(KEY)
 let main={};try{main=JSON.parse(localStorage.getItem("rc-ai-world")||"{}")}catch(e){}
 const $=id=>document.getElementById(id);
 $("code").value=st.code||(done&&done.code)||main.code||"";$("route").value=st.route||(done&&done.route)||main.route||"";
-["sent","r1","r2"].forEach(n=>{if(st[n])$(n).value=st[n]});
+["sent","r1","r2","q1why","q4"].forEach(n=>{if(st[n])$(n).value=st[n]});
+["q1","q2","q3"].forEach(n=>{if(st[n]){const r=document.querySelector(`input[name=${n}][value="${CSS.escape(st[n])}"]`);if(r)r.checked=true}});
 ITEMS.forEach((it,k)=>{if(st["m"+k]){const r=document.querySelector(`input[name=m${k}][value="${CSS.escape(st["m"+k])}"]`);if(r)r.checked=true}});
-const save=()=>{const v={code:$("code").value,route:$("route").value,sent:$("sent").value,r1:$("r1").value,r2:$("r2").value};ITEMS.forEach((it,k)=>{const c=document.querySelector(`input[name=m${k}]:checked`);if(c)v["m"+k]=c.value});st=v;try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
+const save=()=>{const v={code:$("code").value,route:$("route").value,sent:$("sent").value,r1:$("r1").value,r2:$("r2").value,q1why:$("q1why").value,q4:$("q4").value};["q1","q2","q3"].forEach(n=>{const c=document.querySelector(`input[name=${n}]:checked`);if(c)v[n]=c.value});ITEMS.forEach((it,k)=>{const c=document.querySelector(`input[name=m${k}]:checked`);if(c)v["m"+k]=c.value});st=v;try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}};
 document.addEventListener("input",save);document.addEventListener("change",save);
 const PRON=/\b(who|whom|which|that|whose|where|when)\b/i;
 $("go").onclick=()=>{
@@ -166,7 +177,7 @@ $("go").onclick=()=>{
  fs.className="fb info";fs.textContent=!s?"You haven’t written a sentence yet.":PRON.test(s)?"Your sentence has a relative pronoun. Your teacher will check it.":"I can’t find a relative pronoun (who, which, that, whose, where, when). Check your sentence.";
  const r=$("res");r.hidden=false;
  r.innerHTML=`<h2 style="font-size:24px">Exit ticket · ${esc($("code").value||"no code")}</h2><div class="big">${n} / 4</div><p class="note">correct answers in part A</p><div class="rows"><div class="row"><span>Part A</span><div class="bar"><i style="width:${n/4*100}%"></i></div><span class="num">${n} / 4</span></div></div><p>Compare with your quick test at the start of the lesson: did you get more right?</p><div class="btns"><button class="btn main" type="button" id="share">Copy results for your teacher</button></div><p class="note" id="sh"></p>`;
- const text=[`EXIT TICKET – Relative Clauses in an AI World`,`Code: ${$("code").value||"–"} · Route: ${$("route").value||"–"}`,`Route result: ${done?done.tot+"/"+done.max:"–"}`,`Exit ticket part A: ${n}/4`,...lines,`Part B (sentence, ${w} words): ${s||"–"}`,`Part C – AI helped me understand: ${$("r1").value.trim()||"–"}`,`Part C – AI mistake / useless answer: ${$("r2").value.trim()||"–"}`].join("\n");
+ const text=[`EXIT TICKET – Relative Clauses in an AI World`,`Code: ${$("code").value||"–"} · Route: ${$("route").value||"–"}`,`Route result: ${done?done.tot+"/"+done.max:"–"}`,`Exit ticket part A: ${n}/4`,...lines,`Part B (sentence, ${w} words): ${s||"–"}`,`Part C – AI helped me understand: ${$("r1").value.trim()||"–"}`,`Part C – AI mistake / useless answer: ${$("r2").value.trim()||"–"}`,`Questionnaire – AI helped me understand the rule: ${st.q1||"–"} · Why: ${$("q1why").value.trim()||"–"}`,`Questionnaire – AI gave a wrong or useless example: ${st.q2||"–"}`,`Questionnaire – My route was: ${st.q3||"–"}`,`Questionnaire – One thing I would change: ${$("q4").value.trim()||"–"}`].join("\n");
  $("share").onclick=async()=>{const sh=$("sh");try{await navigator.clipboard.writeText(text);sh.textContent="Copied. Paste it in Classroom / Moodle for your teacher."}catch(e){sh.innerHTML=`Copy this text and paste it for your teacher:<textarea class="copybox" readonly>${esc(text)}</textarea>`;sh.querySelector("textarea").select()}};
  r.scrollIntoView({behavior:"smooth"});
 };
